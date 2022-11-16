@@ -6,6 +6,11 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="start_1">SNOW\nWHITE</string>
+    <string name="start_2">APPLE\nSWEETNESS\nDETECTING</string>
+    <string name="start_3">-</string>
+    <string name="main_1_button">CAMERA</string>
+    <string name="main_2_button">ALBUM</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
