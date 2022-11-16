@@ -4,27 +4,38 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+<<<<<<< HEAD
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+=======
+import android.os.Build;
+import android.os.Bundle;
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+<<<<<<< HEAD
 import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+=======
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
 
 public class CameraActivity extends AppCompatActivity {
     final private static String TAG = "Top Gun";
@@ -51,6 +62,7 @@ public class CameraActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(CameraActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
+<<<<<<< HEAD
         dispatchTakePictureIntent();
 
 //        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -58,6 +70,15 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
+=======
+
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, TAKE_PICTURE);
+
+    }
+
+
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
     // 권한 요청
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -69,6 +90,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
+<<<<<<< HEAD
     // 카메라로 촬영한 영상을 가져오는 부분
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -141,5 +163,23 @@ public class CameraActivity extends AppCompatActivity {
    }
 
 
+=======
+    // 카메라로 촬영한 사진의 썸네일을 가져와 이미지뷰에 띄워줌
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        switch (requestCode) {
+            case TAKE_PICTURE:
+                if (resultCode == RESULT_OK && intent.hasExtra("data")) {
+                    Bitmap bitmap = (Bitmap) intent.getExtras().get("data");
+                    if (bitmap != null) {
+                        iv_photo.setImageBitmap(bitmap);
+                    }
+                }
+                break;
+        }
+    }
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
 }
 

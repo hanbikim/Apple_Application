@@ -38,6 +38,7 @@
         <activity android:name=".CameraActivity"/>
         <activity android:name=".MainActivity"/>
 
+<<<<<<< HEAD
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.FileProvider"
@@ -47,6 +48,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+=======
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
     </application>
 
 </manifest>

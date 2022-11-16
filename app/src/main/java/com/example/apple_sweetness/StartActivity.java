@@ -24,4 +24,7 @@ public class StartActivity extends AppCompatActivity {
 
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
