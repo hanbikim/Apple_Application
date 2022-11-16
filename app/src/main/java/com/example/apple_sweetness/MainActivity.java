@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Camera
         Button CameraBtn = findViewById(R.id.Camera);
         CameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Album, Gallery
         Button AlbumBtn = findViewById(R.id.Album);
         AlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
