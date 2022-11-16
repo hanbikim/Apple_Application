@@ -5,14 +5,24 @@
       <map>
         <entry key="app/src/main/res/layout/activity_feature.xml" value="0.23052536231884058" />
         <entry key="app/src/main/res/layout/activity_first.xml" value="0.23645833333333333" />
+<<<<<<< HEAD
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20376281738281254" />
+        <entry key="app/src/main/res/layout/activity_photo.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_start.xml" value="0.2036285400390625" />
+=======
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_photo.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.1" />
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2513586956521739" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/test.xml" value="0.12259371833839919" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.253125" />
+<<<<<<< HEAD
+        <entry key="app/src/main/res/xml/file_paths.xml" value="0.2536231884057971" />
+=======
+>>>>>>> 704c75232594750cc542526fb611c8c54c403ecb
       </map>
     </option>
   </component>
