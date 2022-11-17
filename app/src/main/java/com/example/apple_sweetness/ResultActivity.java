@@ -13,6 +13,7 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_apple_sweetness);
 
 
@@ -28,6 +29,15 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
-    //get data from server
 
 }
+
+//img -> server
+
+
+//server -> img
+
+
+
+
+// server -> result txt
