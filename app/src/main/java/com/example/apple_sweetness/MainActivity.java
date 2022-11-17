@@ -10,8 +10,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,17 +41,18 @@ public class MainActivity extends AppCompatActivity {
         AlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.activity_photo);
-                imageView = findViewById(R.id.iv_photo);
+                setContentView(R.layout.activity_select);
+                imageView = findViewById(R.id.appleImg);
 
                 ImagefromGallery();
-//                Intent AlbumIntent = new Intent(getApplicationContext(), AlbumActivity.class);
-//                startActivity(AlbumIntent);
+                textViewClick();
             }
 
         });
     }
 
+
+    //Album
     private void ImagefromGallery() {
         Intent AlbumIntent = new Intent();
         AlbumIntent.setType("image/*");
@@ -69,9 +72,31 @@ public class MainActivity extends AppCompatActivity {
                 }catch (Exception e){
 
                 }
-            }else if(resultCode ==RESULT_CANCELED){ //cancel code!!!
+            }else if(resultCode ==RESULT_CANCELED){ //cancel code
 
             }
         }
+    }
+
+    private void textViewClick(){
+        //back
+        TextView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagefromGallery();
+
+            }
+        });
+
+        //start
+        TextView start = findViewById(R.id.start);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent StartIntent = new Intent(getApplicationContext(), ResultActivity.class);
+                startActivity(StartIntent);
+            }
+        });
     }
 }
