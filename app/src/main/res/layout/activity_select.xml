@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="132dp"
         android:layout_marginBottom="28dp"
         android:fontFamily="@font/creteround"
@@ -40,7 +41,8 @@
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/back"
@@ -82,7 +84,7 @@
         android:layout_marginTop="115dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="115dp"
-        android:src="@drawable/apple"
+        android:src="@drawable/apple_check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
