@@ -55,12 +55,10 @@ public class CameraActivity extends AppCompatActivity {
 
         dispatchTakePictureIntent();
 
-//        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//        startActivityForResult(cameraIntent, TAKE_PICTURE);
 
     }
 
-    // 권한 요청
+    // Request Permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -71,7 +69,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    // 카메라로 촬영한 영상을 가져오는 부분
+    // Bring image taken from camera
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -106,7 +104,7 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-    // 사진 촬영 후 썸네일만 띄워줌. 이미지를 파일로 저장해야 함
+    // 사진 촬영 후 썸네일만 띄워줌. Save image as file
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -121,10 +119,8 @@ public class CameraActivity extends AppCompatActivity {
         return image;
     }
 
-    // 카메라 인텐트 실행하는 부분
+    // Perform camera intent
     private void dispatchTakePictureIntent() {
-//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        startActivityForResult(cameraIntent, TAKE_PICTURE);
 
         Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 

@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 imageView = findViewById(R.id.iv_photo);
 
                 ImagefromGallery();
-//                Intent AlbumIntent = new Intent(getApplicationContext(), AlbumActivity.class);
-//                startActivity(AlbumIntent);
             }
 
         });
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 }catch (Exception e){
 
                 }
-            }else if(resultCode ==RESULT_CANCELED){ //cancel code!!!
+            }else if(resultCode ==RESULT_CANCELED){ //cancel code
 
             }
         }
