@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         AlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.activity_photo);
-                imageView = findViewById(R.id.iv_photo);
+                setContentView(R.layout.activity_select);
+                imageView = findViewById(R.id.appleImg);
 
                 ImagefromGallery();
             }
