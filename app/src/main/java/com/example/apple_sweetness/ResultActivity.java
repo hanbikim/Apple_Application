@@ -13,10 +13,11 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_photo);
 
-        
-//        Home button
+        setContentView(R.layout.activity_apple_sweetness);
+
+
+        //Home button
 //        ImageView home = findViewById(R.id.home);
 //        home.setOnClickListener(new View.OnClickListener() {
 //            @Override
