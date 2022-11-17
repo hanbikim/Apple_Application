@@ -13,7 +13,10 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +32,7 @@ import java.util.Date;
 
 public class CameraActivity extends AppCompatActivity {
     final private static String TAG = "Top Gun";
-    ImageView iv_photo;
+    ImageView appleImg;
 
     final static int TAKE_PICTURE = 1;
 
@@ -39,9 +42,9 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_photo);
+        setContentView(R.layout.activity_select);
 
-        iv_photo = findViewById(R.id.iv_photo);
+        appleImg = findViewById(R.id.appleImg);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -83,14 +86,14 @@ public class CameraActivity extends AppCompatActivity {
                             ImageDecoder.Source source = ImageDecoder.createSource(getContentResolver(), Uri.fromFile(file));
                             try {
                                 bitmap = ImageDecoder.decodeBitmap(source);
-                                if (bitmap != null) { iv_photo.setImageBitmap(bitmap); }
+                                if (bitmap != null) { appleImg.setImageBitmap(bitmap); }
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         } else {
                             try {
                                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(file));
-                                if (bitmap != null) { iv_photo.setImageBitmap(bitmap); }
+                                if (bitmap != null) { appleImg.setImageBitmap(bitmap); }
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -137,6 +140,7 @@ public class CameraActivity extends AppCompatActivity {
             }
         }
    }
+
 
 }
 
