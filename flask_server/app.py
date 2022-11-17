@@ -11,6 +11,11 @@ def uploadImg():
 def showImg():
     return render_template('showImg.html')
 
+@app.route('/txt')
+def read_txt():
+    f = open('./static/test.txt', 'r')
+    return "</br>".join(f.readlines())
+
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port ='5002', debug=True) 
     # host = '0.0.0.0' not local
