@@ -41,7 +41,7 @@
         android:layout_width="409dp"
         android:layout_height="289dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="104dp"
         android:src="@drawable/apple_check2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

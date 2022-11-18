@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path name="images" path="./" />
+
+    <!--Context.getCacheDir() local storage-->
+    <cache-path
+        name="cache"
+        path="." />
+    <!--/data/data/com.topgun.apple_sweetness-->
+
+    <!--Context.getFilesDir() local storage-->
+    <files-path
+        name="Capture"
+        path="." />
+
 </paths>

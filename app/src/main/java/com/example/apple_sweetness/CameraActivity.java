@@ -1,5 +1,7 @@
 package com.example.apple_sweetness;
 
+import static java.lang.System.out;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,18 +19,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 public class CameraActivity extends AppCompatActivity {
     final private static String TAG = "Top Gun";
@@ -39,44 +43,27 @@ public class CameraActivity extends AppCompatActivity {
     String mCurrentPhotoPath;
     final static int REQUEST_TAKE_PHOTO = 1;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select);
+        setContentView(R.layout.activity_apple_sweetness);
 
-        appleImg = findViewById(R.id.appleImg);
+        appleImg = findViewById(R.id.apple_check);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                Log.d(TAG, "권한 설정 완료");
+                Log.d(TAG, "finished authorization");
             }
             else {
-                Log.d(TAG, "권한 설정 요청");
+                Log.d(TAG, "request for authorization");
                 ActivityCompat.requestPermissions(CameraActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
 
         dispatchTakePictureIntent();
 
-        //back
-        TextView back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dispatchTakePictureIntent();
-
-            }
-        });
-
-        //start
-        TextView start = findViewById(R.id.start);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent StartIntent = new Intent(getApplicationContext(), ResultActivity.class);
-                startActivity(StartIntent);
-            }
-        });
+        out.close();
     }
 
     // Request Permission
@@ -125,22 +112,25 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-    // 사진 촬영 후 썸네일만 띄워줌. Save image as file
+    // Save image as file
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
+        File cacheDir = getCacheDir(); //path external
+
+        File imageFile = File.createTempFile(
                 imageFileName,
                 ".jpg",
-                storageDir
+                cacheDir
         );
 
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
+        mCurrentPhotoPath = imageFile.getAbsolutePath();
+        return imageFile;
     }
 
     // Perform camera intent
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void dispatchTakePictureIntent() {
 
         Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -149,9 +139,19 @@ public class CameraActivity extends AppCompatActivity {
                 PackageManager.FEATURE_CAMERA)) {
             File photoFile = null;
 
-            try { photoFile = createImageFile(); }
-            catch (IOException ex) { }
+            try {
+                photoFile = createImageFile();
+
+                // create empty file
+                photoFile.createNewFile();
+
+                FileOutputStream out = new FileOutputStream(photoFile);
+            }
+            catch (IOException ex) {
+
+            }
             if(photoFile != null) {
+
                 Uri photoURI = FileProvider.getUriForFile(this, "com.example.FileProvider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
