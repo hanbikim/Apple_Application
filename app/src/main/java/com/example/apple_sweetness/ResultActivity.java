@@ -23,6 +23,16 @@ public class ResultActivity extends AppCompatActivity {
         apple_result.setMovementMethod(new ScrollingMovementMethod());
 
 
+        //Home button
+
+//       ImageView home = findViewById(R.id.home_bu);
+//       home.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View v) {
+//               Intent AppleSweetnessIntent = new Intent(getApplicationContext(), MainActivity.class);
+//               startActivity(AppleSweetnessIntent);
+//            }
+//        });
 
     }
 

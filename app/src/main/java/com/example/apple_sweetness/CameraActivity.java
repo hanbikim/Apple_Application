@@ -64,6 +64,27 @@ public class CameraActivity extends AppCompatActivity {
         dispatchTakePictureIntent();
 
         out.close();
+
+        //back
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+
+            }
+        });
+
+        //start
+        ImageView start = findViewById(R.id.go);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent StartIntent = new Intent(getApplicationContext(), ResultActivity.class);
+                startActivity(StartIntent);
+            }
+        });
+
     }
 
     // Request Permission
