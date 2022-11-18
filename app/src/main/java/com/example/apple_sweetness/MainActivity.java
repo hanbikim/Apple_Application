@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void textViewClick(){
         //back
-        TextView back = findViewById(R.id.back);
+        ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //start
-        TextView start = findViewById(R.id.start);
+        ImageView start = findViewById(R.id.go);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
