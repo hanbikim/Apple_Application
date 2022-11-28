@@ -40,6 +40,7 @@
         <activity android:name=".ResultActivity"/>
         <activity android:name=".ShowImagesActivity"/>
         <activity android:name=".AlbumActivity"/>
+        <activity android:name=".Server"/>
 
 
         <provider
