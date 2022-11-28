@@ -29,7 +29,7 @@ public class ShowImagesActivity extends AppCompatActivity {
             @Override
             public void run(){
                 try{
-                    URL url = new URL("http://192.168.2.173:5002/showImg");
+                    URL url = new URL("http://192.168.2.173:777/static/squared_tree/detected_apples.jpg");
 
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
