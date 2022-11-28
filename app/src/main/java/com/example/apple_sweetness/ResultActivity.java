@@ -25,14 +25,13 @@ public class ResultActivity extends AppCompatActivity {
 
         //Home button
 
-//       ImageView home = findViewById(R.id.home_bu);
-//       home.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View v) {
-//               Intent AppleSweetnessIntent = new Intent(getApplicationContext(), MainActivity.class);
-//               startActivity(AppleSweetnessIntent);
-//            }
-//        });
+      Button home = findViewById(R.id.home_bu);
+       home.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {Intent AppleSweetnessIntent = new Intent(getApplicationContext(), MainActivity.class);
+              startActivity(AppleSweetnessIntent);
+            }
+        });
 
     }
 
