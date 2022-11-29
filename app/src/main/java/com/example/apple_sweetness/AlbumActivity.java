@@ -75,6 +75,7 @@ public class AlbumActivity extends AppCompatActivity {
                     Uri uri = data.getData();
                     Glide.with(getApplicationContext())
                             .load(uri)
+                            .fitCenter()
                             .into(imageView);
                 }catch (Exception e){
                 }
