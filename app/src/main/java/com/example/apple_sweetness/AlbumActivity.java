@@ -72,7 +72,7 @@ public class AlbumActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 try{
-                    Uri uri = data.getData();s
+                    Uri uri = data.getData();
                     Glide.with(getApplicationContext())
                             .load(uri)
                             .fitCenter()
