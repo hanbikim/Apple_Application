@@ -47,6 +47,7 @@
             android:id="@+id/appleImg"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/apple_check" />
 
