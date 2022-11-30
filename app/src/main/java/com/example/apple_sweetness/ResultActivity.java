@@ -1,4 +1,4 @@
-ackage com.example.apple_sweetness;
+package com.example.apple_sweetness;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
