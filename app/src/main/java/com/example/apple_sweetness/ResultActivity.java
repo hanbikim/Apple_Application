@@ -1,4 +1,4 @@
-package com.example.apple_sweetness;
+ackage com.example.apple_sweetness;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -60,7 +60,7 @@ public class ResultActivity extends AppCompatActivity {
                 }
         });
 
-        
+
         // get from server()
         //sugar levels - text
         getSugarLevels(apple_result);
