@@ -26,7 +26,6 @@ import okhttp3.Response;
 public class Server extends AppCompatActivity {
 
     // declare attribute for textview
-    private EditText editText;
     private TextView textView;
 
     @Override
