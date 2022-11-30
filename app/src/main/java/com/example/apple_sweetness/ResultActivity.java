@@ -60,7 +60,7 @@ public class ResultActivity extends AppCompatActivity {
                 }
         });
 
-        
+
         // get from server()
         //sugar levels - text
         getSugarLevels(apple_result);
