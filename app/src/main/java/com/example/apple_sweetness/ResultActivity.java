@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -23,12 +24,15 @@ import java.net.URL;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.RequestBody;
+import okhttp3.MultipartBody;
 
 public class ResultActivity extends AppCompatActivity {
-
+    String selectedImagePath;
     Bitmap bitmap;
 
     @Override
@@ -37,6 +41,10 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_apple_sweetness);
 
         ImageView imageView = (ImageView)findViewById(R.id.appleImg2);
+
+        //send image
+        connect_server();
+
 
         //scroll
         TextView apple_result = (TextView)findViewById(R.id.apple_result);
@@ -53,10 +61,7 @@ public class ResultActivity extends AppCompatActivity {
         });
 
 
-
-        //wait
-
-        // get_server()
+        // get from server()
         //sugar levels - text
         getSugarLevels(apple_result);
         //apple image
@@ -66,6 +71,82 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+
+
+
+    public void connect_server() {
+        // creating ipv4 address
+        String ipv4Address = "192.168.2.173";
+        String portNumber = "777";
+
+        String postUrl= "http://"+ipv4Address+":"+portNumber+"/";
+
+        // Get ready to upload image into the server
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+
+        // Read BitMap by file path
+        Bitmap bm = BitmapFactory.decodeFile(selectedImagePath, options);
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        RequestBody postBodyImage = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("image", "appletree.jpg", RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
+                .build();
+
+
+        // creating a client
+        OkHttpClient client = new OkHttpClient();
+
+        // building a request
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(postBodyImage)
+                .build();
+        System.out.println("2works fine");
+
+        // making call asynchronously
+        client.newCall(request).enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                // Cancel the post on failure.
+                call.cancel();
+
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+            }
+        });
+
+        try
+        {
+            System.out.println("Should I wait here?");
+            Thread.sleep(20000);
+            System.out.println("waited for 20 seconds");
+        }
+        catch(InterruptedException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
 
 
 
@@ -88,7 +169,7 @@ public class ResultActivity extends AppCompatActivity {
 
                 String sugarLevels = response.body().string();
 
-                String sugarLevel[] = sugarLevels.split(",");
+                String sugarLevel[] = sugarLevels.split(", ");
                 StringBuffer sugarText = new StringBuffer();
 
                 for(int i = 0; i<sugarLevel.length; i++){
