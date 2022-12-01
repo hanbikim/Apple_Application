@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -23,6 +25,8 @@ public class AlbumActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 0;
     ImageView imageView;
 
+    //Intent startIntent = new Intent(getApplicationContext(), ResultActivity.class);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,27 +35,6 @@ public class AlbumActivity extends AppCompatActivity {
         imageView = findViewById(R.id.appleImg);
 
         ImagefromGallery();
-        textViewClick();
-
-        //back
-        ImageView back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImagefromGallery();
-
-            }
-        });
-
-        //start
-        ImageView start = findViewById(R.id.go);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent StartIntent = new Intent(getApplicationContext(), ResultActivity.class);
-                startActivity(StartIntent);
-            }
-        });
 
     }
 
@@ -77,6 +60,9 @@ public class AlbumActivity extends AppCompatActivity {
                             .load(uri)
                             .fitCenter()
                             .into(imageView);
+                    BackClick();
+                    StartClick(uri);
+
                 }catch (Exception e){
                 }
             }else if(resultCode ==RESULT_CANCELED){ //cancel code
@@ -104,7 +90,6 @@ public class AlbumActivity extends AppCompatActivity {
         File file = new File(uri.getPath());
         String[] filePath = file.getPath().split(":");
         String image_id = filePath[filePath.length - 1];
-
         Cursor cursor = getContentResolver().query(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -116,8 +101,7 @@ public class AlbumActivity extends AppCompatActivity {
         return null;
     }
 
-    private void textViewClick(){
-        //back
+    private void BackClick(){
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,14 +110,18 @@ public class AlbumActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void StartClick(Uri uri){
         //start
         ImageView start = findViewById(R.id.go);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent StartIntent = new Intent(getApplicationContext(), ResultActivity.class);
-                startActivity(StartIntent);
+                Intent startIntent = new Intent(getApplicationContext(), ResultActivity.class);
+                String path = getImageFilePath(uri);
+                startIntent.putExtra("path", path);
+                startActivity(startIntent);
             }
         });
     }

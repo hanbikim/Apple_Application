@@ -35,15 +35,20 @@ public class ResultActivity extends AppCompatActivity {
     String selectedImagePath;
     Bitmap bitmap;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apple_sweetness);
 
         ImageView imageView = (ImageView)findViewById(R.id.appleImg2);
+        TextView textView = (TextView)findViewById(R.id.apple_sweetness);
 
-        //send image
-        connect_server();
+        Intent intent = getIntent();
+        String path = intent.getStringExtra("path");
+        selectedImagePath = path;
+//        send image
+         connect_server();
 
 
         //scroll
@@ -66,8 +71,6 @@ public class ResultActivity extends AppCompatActivity {
         getSugarLevels(apple_result);
         //apple image
         getAppleImage(imageView);
-
-
 
     }
 
@@ -187,7 +190,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void run(){
                 try{
-                    URL url = new URL("http://192.168.2.173:777/static/squared_tree/detected_apples.jpg");
+                    URL url = new URL("http://192.168.2.173:777/static//detected_apples.jpg");
 
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
