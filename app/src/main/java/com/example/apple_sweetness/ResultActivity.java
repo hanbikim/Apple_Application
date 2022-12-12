@@ -47,11 +47,11 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String path = intent.getStringExtra("path");
         selectedImagePath = path;
-//        send image
-         connect_server();
+        // Send an Image file to the Flask server
+        connect_server();
 
 
-        //scroll
+        // Allow movement on text view
         TextView apple_result = (TextView)findViewById(R.id.apple_result);
         apple_result.setMovementMethod(new ScrollingMovementMethod());
 
@@ -65,23 +65,20 @@ public class ResultActivity extends AppCompatActivity {
                 }
         });
 
-
-        // get from server()
-        //sugar levels - text
+        // Get Sugar Levels from the server
         getSugarLevels(apple_result);
-        //apple image
+        // Get apple image from the server
         getAppleImage(imageView);
 
     }
 
 
-
-
     public void connect_server() {
-        // creating ipv4 address
+        // Get Flask server IP address and port number
         String ipv4Address = "192.168.2.173";
         String portNumber = "777";
-
+        
+        // Combine the ip address and port number to create a URL
         String postUrl= "http://"+ipv4Address+":"+portNumber+"/";
 
         // Get ready to upload image into the server
@@ -100,45 +97,46 @@ public class ResultActivity extends AppCompatActivity {
                 .build();
 
 
-        // creating a client
+        // Creating a client
         OkHttpClient client = new OkHttpClient();
 
-        // building a request
+        // Building a request
         Request request = new Request.Builder()
                 .url(postUrl)
                 .post(postBodyImage)
                 .build();
         System.out.println("2works fine");
 
-        // making call asynchronously
+        // Making call asynchronously
         client.newCall(request).enqueue(new Callback() {
 
-            @Override
+            @Override // If connection failed
             public void onFailure(Call call, IOException e) {
-                // Cancel the post on failure.
+                // Cancel the call on failure
                 call.cancel();
 
                 // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        // Do nothing
                     }
                 });
             }
 
-            @Override
+            @Override // If connection succeed
             public void onResponse(Call call, final Response response) throws IOException {
                 // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        // Do nothing
                     }
                 });
             }
         });
-
+        
+        // Wait for HML output for 25 seconds
         try
         {
             System.out.println("Should I wait here?");
@@ -154,19 +152,23 @@ public class ResultActivity extends AppCompatActivity {
 
 
     private void getSugarLevels(TextView textView){
+        // Create a client
         OkHttpClient okHttpClient = new OkHttpClient();
+        // Build a request
         Request request = new Request.Builder().url("http://192.168.2.173:777/txt").build();
+        // Send a request
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        // Toast message appears when server connection failed
                         Toast.makeText(ResultActivity.this, "server down", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
-
+            // Read a text file on the server when connection success
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
@@ -187,7 +189,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void getAppleImage(ImageView imageView){
         Thread mThread = new Thread(){
-            @Override
+            @Override // Get image from the server
             public void run(){
                 try{
                     URL url = new URL("http://192.168.2.173:777/static//detected_apples.jpg");
@@ -207,7 +209,7 @@ public class ResultActivity extends AppCompatActivity {
         };
         mThread.start();
 
-        try {
+        try { // Try setting the image view to the image received from the server
             mThread.join();
 
             imageView.setImageBitmap(bitmap);
