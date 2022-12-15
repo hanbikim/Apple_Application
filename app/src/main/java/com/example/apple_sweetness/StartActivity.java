@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
-        }, 2000);
+        }, 2500);
 
     }
 }
