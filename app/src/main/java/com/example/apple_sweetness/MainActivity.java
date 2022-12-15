@@ -1,23 +1,28 @@
 package com.example.apple_sweetness;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private static final int REQUEST_CODE = 0;
-    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +44,12 @@ public class MainActivity extends AppCompatActivity {
         AlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.activity_photo);
-                imageView = findViewById(R.id.iv_photo);
-
-                ImagefromGallery();
-//                Intent AlbumIntent = new Intent(getApplicationContext(), AlbumActivity.class);
-//                startActivity(AlbumIntent);
+                Intent AlbumIntent = new Intent(MainActivity.this, AlbumActivity.class);
+                startActivity(AlbumIntent);
             }
-
         });
     }
+<<<<<<< HEAD
 
     private void ImagefromGallery() {
         Intent AlbumIntent = new Intent();
@@ -75,3 +76,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+=======
+}
+>>>>>>> refs/remotes/origin/main
