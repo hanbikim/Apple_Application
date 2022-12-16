@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/pink">
 
+    <!--Camera button.
+    If users press the button, this page shows Camera function -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Camera"
         android:layout_width="297dp"
@@ -27,6 +29,8 @@
         app:rippleColor="#FDCDCD"
         tools:ignore="ExtraText" />
 
+    <!--Album button.
+    If users press the button, this page shows Album function -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Album"
         android:layout_width="297dp"
@@ -48,6 +52,7 @@
         app:rippleColor="#FDCDCD"
         tools:ignore="ExtraText" />
 
+    <!--Background apple tree image-->
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="409dp"
@@ -63,6 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
+    <!--Application title name-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -83,6 +89,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <!--Application subtitle name-->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="235dp"

@@ -49,33 +49,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
-
-    private void ImagefromGallery() {
-        Intent AlbumIntent = new Intent();
-        AlbumIntent.setType("image/*");
-        AlbumIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(AlbumIntent, REQUEST_CODE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                try{
-                    Uri uri = data.getData();
-                    Glide.with(getApplicationContext()).load(uri).into(imageView);
-                }catch (Exception e){
-
-                }
-            }else if(resultCode ==RESULT_CANCELED){ //cancel code!!!
-
-            }
-        }
-    }
 }
-=======
-}
->>>>>>> refs/remotes/origin/main
