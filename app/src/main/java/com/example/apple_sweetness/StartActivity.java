@@ -13,7 +13,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        //make MainaActivity.class performing in 2 seconds later
+        //make MainActivity.class performing in 2 seconds later
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -21,7 +21,7 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
-        }, 2500);
+        }, 2000);
 
     }
 }

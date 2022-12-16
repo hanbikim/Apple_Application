@@ -25,8 +25,6 @@ public class AlbumActivity extends AppCompatActivity {
     static final int REQUEST_CODE = 0;
     ImageView imageView;
 
-    //Intent startIntent = new Intent(getApplicationContext(), ResultActivity.class);
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
