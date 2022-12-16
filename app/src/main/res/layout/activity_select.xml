@@ -17,25 +17,31 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="vertical" >
+
+        <!--Show title of this page that Select Image-->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="@font/creteround"
             android:text="@string/Select_Image"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="25sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="10dp"
         android:orientation="vertical" >
 
+        <!--dividing line-->
         <View
             android:layout_width="wrap_content"
             android:layout_height="10dp"
             android:background="@color/pink" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="500dp"
@@ -43,72 +49,29 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <!--Showing to select image-->
         <ImageView
             android:id="@+id/appleImg"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:gravity="center"
             android:src="@drawable/apple_check" />
-
     </LinearLayout>
-    <LinearLayout
+
+    <!--dividing line-->
+    <View
         android:layout_width="wrap_content"
         android:layout_height="10dp"
-        android:orientation="vertical" >
+        android:background="@color/pink" />
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/select_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="28dp"
-        android:fontFamily="@font/creteround"
-        android:text="@string/Select_Image"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/arrow_right"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/arrow_right1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/arrow_left"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/arrow_left2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-=======
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:background="@color/pink" />
-    </LinearLayout>
     <LinearLayout
->>>>>>> refs/remotes/origin/main
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_gravity="center">
 
+        <!--Back button. Users can go back to camera, album page-->
         <ImageView
             android:id="@+id/back"
             android:layout_width="72dp"
@@ -121,14 +84,14 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
+        <!--Next step button.
+        If users press the button, the page shows the result page-->
         <ImageView
             android:id="@+id/go"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
             android:src="@drawable/right" />
-
     </LinearLayout>
-
 
 </LinearLayout>

@@ -15,7 +15,7 @@
     <string name="START">START</string>
     <string name="Select_Image">Select&#160;Image</string>
     <string name="apple_sweetness">Apple&#160;Sweetness</string>
-    <string name="test_space">TEST&#160;SPACE\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15</string>
+    <string name="test_space">1.&#160;High&#160;/&#160;14.2101\n2.&#160;High&#160;/&#160;13.7994\n3.&#160;Medium&#160;/&#160;12.782\n4.&#160;Medium&#160;/&#160;12.585</string>
     <string name="SEND">SEND</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

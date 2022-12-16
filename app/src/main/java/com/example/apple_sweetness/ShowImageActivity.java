@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ShowImagesActivity extends AppCompatActivity {
+class ShowImagesActivity extends AppCompatActivity {
     ImageView imageView;
     Bitmap bitmap;
 

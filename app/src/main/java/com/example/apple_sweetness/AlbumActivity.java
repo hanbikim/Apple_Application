@@ -22,7 +22,7 @@ import java.io.File;
 
 public class AlbumActivity extends AppCompatActivity {
 
-    private static final int REQUEST_CODE = 0;
+    static final int REQUEST_CODE = 0;
     ImageView imageView;
 
     //Intent startIntent = new Intent(getApplicationContext(), ResultActivity.class);

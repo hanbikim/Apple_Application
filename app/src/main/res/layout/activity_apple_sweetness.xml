@@ -17,6 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="vertical">
+
+        <!--title of this page-->
         <TextView
             android:id="@+id/apple_sweetness"
             android:layout_width="match_parent"
@@ -32,6 +34,7 @@
         android:layout_height="10dp"
         android:orientation="vertical" >
 
+        <!--a diving line-->
         <View
             android:layout_width="wrap_content"
             android:layout_height="10dp"
@@ -43,6 +46,7 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical" >
 
+        <!--showing result image-->
         <ImageView
             android:id="@+id/appleImg2"
             android:layout_width="match_parent"
@@ -55,6 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="10dp"
         android:orientation="vertical" >
+
+        <!--a diving line-->
         <View
             android:id="@+id/middle"
             android:layout_width="wrap_content"
@@ -62,6 +68,10 @@
             android:background="@color/pink" />
     </LinearLayout>
 
+    <!--The resulting space. If Snow White detects multiple apples,
+    It shows multiple apples' Brix values. If Snow White detects multiple apples,
+    It shows multiple apples' Brix values. It has a scroll function,
+    If detecting apple no. is over 5, users can use the scroll function.-->
     <TextView
         android:id="@+id/apple_result"
         android:layout_width="match_parent"
@@ -81,6 +91,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
+
+        <!--a diving line-->
         <View
             android:id="@+id/bottom"
             android:layout_width="match_parent"
@@ -95,6 +107,7 @@
         android:gravity="center"
         android:layout_gravity="center">
 
+        <!--Home button. If users press the home button, it goes back to the main page-->
         <Button
             android:id="@+id/home_bu"
             android:layout_width="64dp"
