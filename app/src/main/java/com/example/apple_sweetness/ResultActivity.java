@@ -47,9 +47,9 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String path = intent.getStringExtra("path");
         selectedImagePath = path;
+
         // Send an Image file to the Flask server
         connect_server();
-
 
         // Allow movement on text view
         TextView apple_result = (TextView)findViewById(R.id.apple_result);
