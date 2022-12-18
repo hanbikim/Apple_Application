@@ -17,7 +17,6 @@ class ShowImagesActivity extends AppCompatActivity {
     ImageView imageView;
     Bitmap bitmap;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +28,20 @@ class ShowImagesActivity extends AppCompatActivity {
             @Override
             public void run(){
                 try{
+                    //url: detected apple image URL path
                     URL url = new URL("http://192.168.2.173:777/static/squared_tree/detected_apples.jpg");
 
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    //Receive a response from the ser
                     conn.setDoInput(true);
+                    //Access to the url link
                     conn.connect();
 
+                    //is: get inputStream value
                     InputStream is = conn.getInputStream();
+                    //Convert to bitmap
                     bitmap = BitmapFactory.decodeStream(is);
+
                 } catch (MalformedURLException e){
                     e.printStackTrace();
                 } catch (IOException e){
@@ -49,6 +54,7 @@ class ShowImagesActivity extends AppCompatActivity {
         try {
             mThread.join();
 
+            //Save the image to imageView
             imageView.setImageBitmap(bitmap);
         } catch (InterruptedException e){
             e.printStackTrace();

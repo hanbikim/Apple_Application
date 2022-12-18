@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         //CameraBtn(id: Camera) is a button in activity_main xml file
         Button CameraBtn = findViewById(R.id.Camera);
 
-        //perform CameraActivity.class when clicking CameraBtn
-        //taking a picture from the camera
+        //Perform CameraActivity.class when clicking CameraBtn
+        //Taking a picture from the camera
         CameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         //AlbumBtn(id: Album)is a button in activity_main xml file
         Button AlbumBtn = findViewById(R.id.Album);
 
-        //perform AlbumActivity.class when clicking AlbumBtn
-        //selecting picture from the album
+        //Perform AlbumActivity.class when clicking AlbumBtn
+        //Selecting picture from the album
         AlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
