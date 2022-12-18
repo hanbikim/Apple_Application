@@ -40,7 +40,9 @@ public class CameraActivity extends AppCompatActivity {
 
     final static int TAKE_PICTURE = 1;
 
+    //mCurrentPhotoPath: saving the path
     String mCurrentPhotoPath;
+    //REQUEST_TAKE_PHOTO: request for taking a picture
     final static int REQUEST_TAKE_PHOTO = 1;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -51,22 +53,26 @@ public class CameraActivity extends AppCompatActivity {
 
         appleImg = findViewById(R.id.appleImg);
 
+        //set permission after checking the permission status
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                Log.d(TAG, "finished authorization");
+                Log.d(TAG, "finished for giving authorization");
             }
             else {
                 Log.d(TAG, "request for authorization");
                 ActivityCompat.requestPermissions(CameraActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
-
+        //Execute camera intent for taking a picture from the camera
         dispatchTakePictureIntent();
 
         out.close();
 
-        //back
+        //back(id: back) is a imageView in  activity_select xml file
         ImageView back = findViewById(R.id.back);
+
+        //call dispatchTakePictureIntent() when clicking back imageView
+        //taking a picture from the camera again
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,8 +81,11 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        //start
+        //start(id: go) is a imageView in activity_select xml file
         ImageView start = findViewById(R.id.go);
+
+        //perform ResultActivity.class when clicking start imageView
+        //show the result of the HML model
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +96,7 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
-    // Request Permission
+    // Request camera permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -98,7 +107,8 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    // Bring image taken from camera
+    // Display image taken from camera in the imageView taken from camera
+    //Use bitmap for displaying high resolution image in imageView
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -108,7 +118,7 @@ public class CameraActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK) {
                         File file = new File(mCurrentPhotoPath);
                         Bitmap bitmap;
-                        if (Build.VERSION.SDK_INT >= 29) {
+                        if (Build.VERSION.SDK_INT >= 29) {//getBitmap() function doesn't work on API 29 version
                             ImageDecoder.Source source = ImageDecoder.createSource(getContentResolver(), Uri.fromFile(file));
                             try {
                                 bitmap = ImageDecoder.decodeBitmap(source);
@@ -116,7 +126,7 @@ public class CameraActivity extends AppCompatActivity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                        } else {
+                        } else {//getBitmap() function works on under API 29 version
                             try {
                                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(file));
                                 if (bitmap != null) { appleImg.setImageBitmap(bitmap); }
@@ -138,8 +148,9 @@ public class CameraActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File cacheDir = getCacheDir(); //path external
+        File cacheDir = getCacheDir();
 
+        //Save the image in cache storage
         File imageFile = File.createTempFile(
                 imageFileName,
                 ".jpg",
@@ -150,7 +161,7 @@ public class CameraActivity extends AppCompatActivity {
         return imageFile;
     }
 
-    // Perform camera intent
+    // Execute camera intent
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void dispatchTakePictureIntent() {
 
@@ -172,7 +183,6 @@ public class CameraActivity extends AppCompatActivity {
 
             }
             if(photoFile != null) {
-
                 Uri photoURI = FileProvider.getUriForFile(this, "com.example.FileProvider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);

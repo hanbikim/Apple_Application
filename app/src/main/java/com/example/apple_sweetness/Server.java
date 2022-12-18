@@ -25,20 +25,26 @@ import okhttp3.Response;
 
 public class Server extends AppCompatActivity {
 
-    // declare attribute for textview
+
     private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
-        //editText = findViewById(R.id.text);
+
         textView = findViewById(R.id.text);
 
+        //okHttpClient: create a OkHttpClient to make a request
         OkHttpClient okHttpClient = new OkHttpClient();
+
+        //Building a request with the local server URL
         Request request = new Request.Builder().url("http://192.168.2.173:777/txt").build();
+
+        // Making okHttpClient call asynchronously
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
+            // If server is unreachable
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 runOnUiThread(new Runnable() {
                     @Override
@@ -49,10 +55,14 @@ public class Server extends AppCompatActivity {
             }
 
             @Override
+            // Got response from the server
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
+
+                //sugarLevels: the texts from the responded server
                String sugarLevels = response.body().string();
 
+                //split the sentence by ,
                 String sugarLevel[] = sugarLevels.split(",");
                 StringBuffer sugarText = new StringBuffer();
 
@@ -60,6 +70,8 @@ public class Server extends AppCompatActivity {
                     sugarText.append(i+1);
                     sugarText.append(". "+sugarLevel[i]+"\n");
                 }
+
+                //Show apple sugar levels
                 textView.setText(sugarText);
             }
         });

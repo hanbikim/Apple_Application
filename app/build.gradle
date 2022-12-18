@@ -42,11 +42,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-    // flask - okhttp
+    //OkHttp for server
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
 
-    //album - glide
+    //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 

@@ -21,6 +21,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 
+//Main Page selecting picture in two way (Camera, Album)
 public class MainActivity extends AppCompatActivity {
 
 
@@ -29,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Camera
+        //CameraBtn(id: Camera) is a button in activity_main xml file
         Button CameraBtn = findViewById(R.id.Camera);
+
+        //Perform CameraActivity.class when clicking CameraBtn
+        //Taking a picture from the camera
         CameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Album, Gallery
+        //AlbumBtn(id: Album)is a button in activity_main xml file
         Button AlbumBtn = findViewById(R.id.Album);
+
+        //Perform AlbumActivity.class when clicking AlbumBtn
+        //Selecting picture from the album
         AlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
