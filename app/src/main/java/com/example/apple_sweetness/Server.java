@@ -48,6 +48,7 @@ public class Server extends AppCompatActivity {
         //Building a request with the local server URL
         Request request = new Request.Builder().url(postUrl+"txt").build();
 
+
         // Making okHttpClient call asynchronously
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
