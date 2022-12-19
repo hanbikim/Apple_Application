@@ -28,6 +28,13 @@ public class Server extends AppCompatActivity {
 
     private TextView textView;
 
+    // Get Flask server IP address and port number
+    String ipv4Address = "10.185.223.124";
+    String portNumber = "777";
+
+    // Combine the ip address and port number to create a URL
+    String postUrl= "http://"+ipv4Address+":"+portNumber+"/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class Server extends AppCompatActivity {
         OkHttpClient okHttpClient = new OkHttpClient();
 
         //Building a request with the local server URL
-        Request request = new Request.Builder().url("http://192.168.2.173:777/txt").build();
+        Request request = new Request.Builder().url(postUrl+"txt").build();
 
         // Making okHttpClient call asynchronously
         okHttpClient.newCall(request).enqueue(new Callback() {

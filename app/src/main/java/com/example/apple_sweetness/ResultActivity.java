@@ -35,6 +35,12 @@ public class ResultActivity extends AppCompatActivity {
     String selectedImagePath;
     Bitmap bitmap;
 
+    // Get Flask server IP address and port number
+    String ipv4Address = "10.185.223.124";
+    String portNumber = "777";
+
+    // Combine the ip address and port number to create a URL
+    String postUrl= "http://"+ipv4Address+":"+portNumber+"/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -74,13 +80,6 @@ public class ResultActivity extends AppCompatActivity {
 
 
     public void connect_server() {
-        // Get Flask server IP address and port number
-        String ipv4Address = "192.168.2.173";
-        String portNumber = "777";
-        
-        // Combine the ip address and port number to create a URL
-        String postUrl= "http://"+ipv4Address+":"+portNumber+"/";
-
         // Get ready to upload image into the server
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -155,7 +154,7 @@ public class ResultActivity extends AppCompatActivity {
         // Create a client
         OkHttpClient okHttpClient = new OkHttpClient();
         // Build a request
-        Request request = new Request.Builder().url("http://192.168.2.173:777/txt").build();
+        Request request = new Request.Builder().url( postUrl+"txt").build();
         // Send a request
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
@@ -192,7 +191,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override // Get image from the server
             public void run(){
                 try{
-                    URL url = new URL("http://192.168.2.173:777/static//detected_apples.jpg");
+                    URL url = new URL(postUrl+"static//detected_apples.jpg");
 
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
